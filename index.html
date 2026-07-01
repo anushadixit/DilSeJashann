@@ -43,9 +43,9 @@
             pointer-events: none;
         }
 
-        /* Welcome Landing Screen (File 1.jpg background) */
+        /* Welcome Landing Screen (File 1.png background) */
         #welcome-screen {
-            background-image: url('1.jpg');
+            background-image: url('1.png');
             justify-content: flex-end;
             padding-bottom: 8%;
         }
@@ -79,9 +79,9 @@
             background-color: rgba(140, 45, 45, 0.05);
         }
 
-        /* Game Board Screen (File 2.jpg background) */
+        /* Game Board Screen (File 2.png background) */
         #game-screen {
-            background-image: url('2.jpg');
+            background-image: url('2.png');
             justify-content: flex-start;
             padding-top: 5vh;
         }
@@ -146,7 +146,7 @@
             overflow: hidden;
         }
 
-        /* Card Back (Uses cropped A&J image logo) */
+        /* Card Back (Uses card_back.png logo) */
         .card-back {
             background-image: url('card_back.png');
             background-size: cover;
@@ -154,7 +154,7 @@
             background-color: #fff;
         }
 
-        /* Card Front (Reveals cropped photo fragments from File 3.jpg) */
+        /* Card Front (Reveals photo fragments from pair1-8.png) */
         .card-front {
             background-size: cover;
             background-position: center;
@@ -162,20 +162,11 @@
             transform: rotateY(180deg);
         }
 
-        /* Modal Congratulatory Finish (File 5.jpg background) */
+        /* Modal Congratulatory Finish (File 5.png background) */
         #win-screen {
-            background-image: url('5.jpg');
+            background-image: url('5.png');
             justify-content: center;
             background-color: #fbf5ec;
-        }
-
-        /* Decorative hanging lanterns simulation matching theme layout edges */
-        .lantern-chain {
-            position: absolute;
-            top: 0;
-            width: 1px;
-            height: 35%;
-            background: rgba(194, 142, 93, 0.4);
         }
     </style>
 </head>
@@ -196,16 +187,16 @@
     <div id="win-screen" class="screen hidden"></div>
 
     <script>
-        // Setup card identity matching indices across 8 distinct pairs
+        // Updated to explicitly map to the .png assets in your repository
         const cardImages = [
-            'pair1.jpg', 'pair1.jpg',
-            'pair2.jpg', 'pair2.jpg',
-            'pair3.jpg', 'pair3.jpg',
-            'pair4.jpg', 'pair4.jpg',
-            'pair5.jpg', 'pair5.jpg',
-            'pair6.jpg', 'pair6.jpg',
-            'pair7.jpg', 'pair7.jpg',
-            'pair8.jpg', 'pair8.jpg'
+            'pair1.png', 'pair1.png',
+            'pair2.png', 'pair2.png',
+            'pair3.png', 'pair3.png',
+            'pair4.png', 'pair4.png',
+            'pair5.png', 'pair5.png',
+            'pair6.png', 'pair6.png',
+            'pair7.png', 'pair7.png',
+            'pair8.png', 'pair8.png'
         ];
 
         let flippedCards = [];
@@ -267,7 +258,6 @@
             const [card1, card2] = flippedCards;
 
             if (card1.dataset.image === card2.dataset.image) {
-                // Perfect Match Found
                 matchedPairsCount++;
                 flippedCards = [];
                 isProcessing = false;
@@ -278,7 +268,6 @@
                     }, 600);
                 }
             } else {
-                // Mismatch - Flip Back around after timeout boundary
                 setTimeout(() => {
                     card1.classList.remove('flipped');
                     card2.classList.remove('flipped');
